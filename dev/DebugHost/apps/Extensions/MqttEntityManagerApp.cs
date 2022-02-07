@@ -15,7 +15,7 @@ using NetDaemon.HassModel;
 namespace DebugHost.apps.Extensions;
 
 [NetDaemonApp]
-[Focus]
+//[Focus]
 public class MqttEntityManagerApp : IAsyncInitializable
 {
     private readonly IHaContext                    _ha;
@@ -45,7 +45,7 @@ public class MqttEntityManagerApp : IAsyncInitializable
             _logger.LogInformation("Entity {domain}.{entityId} State: {state}", "binary_sensor", "manager_test", entity.State);
 
             await _manager.UpdateAsync("binary_sensor", "manager_test", "ON", JsonSerializer.Serialize(new { attribute1 = "attr1" }))
-                .ConfigureAwait(false);
+                          .ConfigureAwait(false);
             await Task.Delay(250, cancellationToken).ConfigureAwait(false);
             _logger.LogInformation("Entity {domain}.{entityId} State: {state} Attributes: {attributes}",
                 "binary_sensor", "manager_test", entity.State, entity.Attributes);

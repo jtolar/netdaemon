@@ -6,7 +6,7 @@ using System.Threading.Channels;
 
 namespace NetDaemon.Extensions.ThrottleQueue;
 
-public class ThrottleQueue : IAsyncDisposable
+public class ThrottleQueue : IThrottleQueue
 {
     private readonly Channel<(Action, TimeSpan delay)> _actions = Channel.CreateBounded<(Action, TimeSpan delay)>(100);
     private readonly Task                              _processTask;

@@ -1,12 +1,12 @@
 ﻿using System;
-using Microsoft.Extensions.Hosting;
-using NetDaemon.Runtime;
-using NetDaemon.AppModel;
 using System.Reflection;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using NetDaemon.AppModel;
 using NetDaemon.Extensions.Logging;
-using NetDaemon.Extensions.Tts;
 using NetDaemon.Extensions.MqttEntityManager;
+using NetDaemon.Extensions.ThrottleQueue;
+using NetDaemon.Extensions.Tts;
+using NetDaemon.Runtime;
 
 #pragma warning disable CA1812
 
@@ -18,6 +18,7 @@ try
               .UseNetDaemonRuntime()
               .UseNetDaemonTextToSpeech()
               .UseNetDaemonMqttEntityManagement()
+              .UseNetDaemonThrottleQueue()
               .ConfigureServices((_, services) =>
                   services
                       // change type of compilation here
